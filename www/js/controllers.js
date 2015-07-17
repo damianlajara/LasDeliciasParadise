@@ -8,42 +8,38 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('SpecialsCtrl', function ($scope, JsonSpecials) {
+.controller('EventsCtrl', function ($scope, JsonEvents) {
 
-  JsonSpecials.retrieveData().then(function(httpObj){
-    $scope.specials = httpObj.data;
-    console.log("Data", httpObj);
-    console.log("Specials", $scope.specials);
+  JsonEvents.retrieveData().then(function(httpObj){
+    $scope.events = httpObj.data;
   });
 })
 
 //$http returns a promise anyway so you don't need $q
-.factory('JsonSpecials', function ($http){
+.factory('JsonEvents', function ($http){
 
   return {
 
     retrieveData : function() {
       return $http
-        .get('js/specials.json')
+        .get('js/events.json')
         .success(function(data) {
-          console.log("Success in handling json!");
-          console.log("Parsed JSON Data: ", data);
-          data.title = "WORKED!"
+          console.log("Success in parsing json!", data);
         })
         .error(function (status) {
-          console.log("Error in handling json!");
+          console.log("Error in parsing json!");
         });
     }
   }
 })
 
-.controller('SpecialDetailCtrl', function ($scope, $stateParams, JsonSpecials) {
-  JsonSpecials.retrieveData().then(function(httpObj){
-    var specials = httpObj.data;
+.controller('EventDetailCtrl', function ($scope, $stateParams, JsonEvents) {
+  JsonEvents.retrieveData().then(function(httpObj){
+    var events = httpObj.data;
     //Simple id lookup
-    for (var i = 0; i < specials.length; i++) {
-       if (specials[i].id == $stateParams.specialId) {
-         $scope.special = specials[i];
+    for (var i = 0; i < events.length; i++) {
+       if (events[i].id == $stateParams.eventId) {
+         $scope.event = events[i];
          break;
        }
      }

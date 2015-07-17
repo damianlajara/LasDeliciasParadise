@@ -36,21 +36,21 @@ angular.module('starter', ['ionic','starter.controllers'])
        }
      }
    })
-   .state('menu.specials', {
-      url: "/specials",
+   .state('menu.events', {
+      url: "/events",
       views: {
         'menuContent': {
-          templateUrl: "templates/specials.html",
-          controller: 'SpecialsCtrl'
+          templateUrl: "templates/events.html",
+          controller: 'EventsCtrl'
         }
       }
     })
     .state('menu.detail', {
-    url: "/specials/:specialId",
+    url: "/events/:eventId",
     views: {
       'menuContent': {
-        templateUrl: "templates/specialDetail.html",
-        controller: 'SpecialDetailCtrl'
+        templateUrl: "templates/eventDetail.html",
+        controller: 'EventDetailCtrl'
       }
     }
   });
