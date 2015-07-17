@@ -28,6 +28,7 @@ angular.module('starter.controllers', [])
         .success(function(data) {
           console.log("Success in handling json!");
           console.log("Parsed JSON Data: ", data);
+          data.title = "WORKED!"
         })
         .error(function (status) {
           console.log("Error in handling json!");
@@ -35,3 +36,16 @@ angular.module('starter.controllers', [])
     }
   }
 })
+
+.controller('SpecialDetailCtrl', function ($scope, $stateParams, JsonSpecials) {
+  JsonSpecials.retrieveData().then(function(httpObj){
+    var specials = httpObj.data;
+    //Simple id lookup
+    for (var i = 0; i < specials.length; i++) {
+       if (specials[i].id == $stateParams.specialId) {
+         $scope.special = specials[i];
+         break;
+       }
+     }
+  });
+});

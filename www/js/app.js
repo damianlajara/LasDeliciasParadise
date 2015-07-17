@@ -44,7 +44,16 @@ angular.module('starter', ['ionic','starter.controllers'])
           controller: 'SpecialsCtrl'
         }
       }
-    });
+    })
+    .state('menu.detail', {
+    url: "/specials/:specialId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/specialDetail.html",
+        controller: 'SpecialDetailCtrl'
+      }
+    }
+  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/menu/home');
 });
