@@ -35,7 +35,16 @@ angular.module('starter', ['ionic','starter.controllers'])
          controller: 'HomeCtrl'
        }
      }
-   });
+   })
+   .state('menu.specials', {
+      url: "/specials",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/specials.html",
+          controller: 'SpecialsCtrl'
+        }
+      }
+    });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/menu/home');
 });
