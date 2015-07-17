@@ -36,6 +36,15 @@ angular.module('starter', ['ionic','starter.controllers'])
        }
      }
    })
+   .state('menu.bookings', {
+        url: "/bookings",
+        views: {
+          'menuContent': {
+            templateUrl: "templates/bookings.html",
+            controller: 'BookingCtrl'
+          }
+        }
+      })
    .state('menu.events', {
       url: "/events",
       views: {
