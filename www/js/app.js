@@ -36,15 +36,6 @@ angular.module('starter', ['ionic','starter.controllers','ui.bootstrap','ngAnima
        }
      }
    })
-   .state('menu.bookings', {
-        url: "/bookings",
-        views: {
-          'menuContent': {
-            templateUrl: "templates/bookings.html",
-            controller: 'BookingCtrl'
-          }
-        }
-      })
    .state('menu.events', {
       url: "/events",
       views: {

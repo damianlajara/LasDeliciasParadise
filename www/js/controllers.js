@@ -8,15 +8,29 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('BookingCtrl', function ($scope) {
-
-})
-
 .controller('EventsCtrl', function ($scope, JsonEvents) {
 
   JsonEvents.retrieveData().then(function(httpObj){
     $scope.events = httpObj.data;
   });
+})
+
+//$http returns a promise anyway so you don't need $q
+.factory('JsonEvents', function ($http){
+
+  return {
+
+    retrieveData : function() {
+      return $http
+        .get('js/events.json')
+        .success(function(data) {
+          console.log("Success in parsing json!", data);
+        })
+        .error(function (status) {
+          console.log("Error in parsing json!");
+        });
+    }
+  }
 })
 
 .controller('EventDetailCtrl', function ($scope, $stateParams, JsonEvents) {
@@ -30,20 +44,4 @@ angular.module('starter.controllers', [])
        }
      }
   });
-})
-
-//$http returns a promise anyway so you don't need $q
-.factory('JsonEvents', function ($http){
-  return {
-    retrieveData : function() {
-      return $http
-        .get('js/events.json')
-        .success(function(data) {
-          console.log("Success in parsing json!", data);
-        })
-        .error(function (status) {
-          console.log("Error in parsing json!");
-        });
-    }
-  }
 });
