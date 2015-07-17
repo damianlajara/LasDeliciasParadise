@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "title": "Wedding Package",
+      "price": 1000,
+      "promotion": true
+    },
+    {
+      "id": 2,
+      "title": "Birthday Package",
+      "price": 2000,
+      "promotion": false
+    },
+    {
+      "id": 3,
+      "title": "Parties Package",
+      "price": 3000,
+      "promotion": false
+    },
+    {
+      "id": 4,
+      "title": "Anniversary Package",
+      "price": 4000,
+      "promotion": false
+    },
+    {
+      "id": 5,
+      "title": "Baptism Package",
+      "price": 5000,
+      "promotion": false
+    },
+    {
+      "id": 6,
+      "title": "Conference Package",
+      "price": 6000,
+      "promotion": false
+    },
+    {
+      "id": 7,
+      "title": "Kitchen Only",
+      "price": 7000,
+      "promotion": false
+    },
+    {
+      "id": 8,
+      "title": "Pool Only",
+      "price": 8000,
+      "promotion": false
+    },
+    {
+      "id": 9,
+      "title": "Other",
+      "price": 9000,
+      "promotion": false
+    }
+]
