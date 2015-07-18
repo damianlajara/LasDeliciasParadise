@@ -45,6 +45,15 @@ angular.module('starter', ['ionic','starter.controllers','ui.bootstrap','ngAnima
           }
         }
       })
+      .state('menu.aboutUs', {
+        url: "/aboutUs",
+        views: {
+          'menuContent': {
+            templateUrl: "templates/aboutUs.html",
+            controller: 'AboutUsCtrl'
+          }
+        }
+      })
    .state('menu.events', {
       url: "/events",
       views: {

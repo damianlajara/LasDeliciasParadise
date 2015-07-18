@@ -1,0 +1,32 @@
+<ion-view view-title="About us">
+  <div class="tabs tabs-icon-top">
+      <a class="tab-item">
+        <i class="icon ion-image"></i>
+        Gallery
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-information" ng-click=""></i>
+        Info
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-android-contacts"></i>
+        Contact Us
+      </a>
+  </div>
+  <ion-content>
+    <div>
+      <h2 style="text-align: center;" >Las Delicias Paradise</h2>
+      <div style="height: 305px">
+        <carousel interval="myInterval">
+          <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{{slide.image}}" style="margin:0 auto;">
+            <div class="carousel-caption">
+              <h4>Slide {{$index}}</h4>
+              <p>{{slide.text}}</p>
+            </div>
+          </slide>
+        </carousel>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

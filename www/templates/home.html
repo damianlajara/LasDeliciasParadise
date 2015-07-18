@@ -1,5 +1,21 @@
 <ion-view view-title="Home">
   <ion-content>
-    <button class="button button-royal">Click me!</button>
+    <button class="button button-block button-royal">Click me!</button>
+    
+    <form role="form">
+      <div class="form-group" ng-class="{'has-error' : !inputModel}">
+        <label>Disable tooltips conditionally:</label>
+        <input type="password" ng-model="inputModel" class="form-control"
+          placeholder="password"
+          tooltip="Must have at least 1 Uppercase letter and numbers"
+          tooltip-placement="bottom"
+          tooltip-trigger="focus"
+          tooltip-enable="!inputModel" />
+      </div>
+    </form>
+
+    <script type="text/ng-template" id="myTooltipTemplate.html">
+      <span>Special Tooltip with <strong>markup</strong> and {{ dynamicTooltipText }}</span>
+    </script>
   </ion-content>
 </ion-view>
