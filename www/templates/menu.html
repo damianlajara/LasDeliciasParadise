@@ -1,12 +1,9 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
+      <ion-nav-back-button></ion-nav-back-button>
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
@@ -14,23 +11,24 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Options:</h1>
+      <h1 class="title">Options</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close class="item item-icon-left" href="#/menu/home">
+        <ion-item menu-close class="item item-icon-left" ui-sref="menu.home">
           <i class="icon ion-home"></i> Home
         </ion-item>
-        <ion-item menu-close class="item item-icon-left" href="#/menu/bookings">
+        <ion-item menu-close class="item item-icon-left" ui-sref="menu.bookings">
             <i class="icon ion-calendar"></i> Book an appointment
         </ion-item>
-        <ion-item menu-close class="item item-icon-left" href="#/menu/events">
+        <ion-item menu-close class="item item-icon-left" ui-sref="menu.events">
             <i class="icon ion-pricetags"></i> Events
         </ion-item>
-        <ion-item menu-close class="item item-icon-left" href="#/menu/aboutUs">
+        <ion-item menu-close nav-clear class="item item-icon-left" ui-sref="menu.aboutUs">
             <i class="icon ion-information-circled"></i> About Us
         </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>
+
 </ion-side-menus>

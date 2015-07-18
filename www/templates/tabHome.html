@@ -1,0 +1,29 @@
+<ion-view view-title="About Us">
+  <ion-content>
+      <h2 style="text-align: center;" >Las Delicias Paradise</h2>
+        <carousel interval="myInterval">
+          <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+              <h4>Slide {{$index}}</h4>
+              <p>{{slide.text}}</p>
+            </div>
+          </slide>
+        </carousel>
+        <div class="card">
+          <div class="item item-text-wrap">
+            LAS DELICIAS PARADISE - PISCINA PARA ADULTOS Y NIÑOS:
+          </div>
+        </div>
+        <div class="card">
+          <div class="item item-text-wrap">
+            VILLAR* CANCHA DE TENIS* BASKETBALL* VOLEIBOL* SALÓN PARA ACTIVIDADES*
+          </div>
+        </div>
+        <div class="card">
+          <div class="item item-text-wrap">
+            CA/ LAS DELICIAS DESPUES DEL OGAR DE NIÑAS, BANAO REP.DOM.
+          </div>
+        </div>
+  </ion-content>
+</ion-view>
