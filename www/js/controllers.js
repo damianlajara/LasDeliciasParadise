@@ -5,8 +5,21 @@ angular.module('starter.controllers', [])
   $ionicConfigProvider.navBar.alignTitle('center')
 })
 
-.controller('MenuCtrl', function($scope) {
+.controller('MenuCtrl', function($scope, $firebaseAuth) {
+  var firebaseAuth = $firebaseAuth(firebaseRef);
+  var authData = firebaseAuth.$getAuth();
 
+  $scope.logout = function () {
+    console.log("clicked on log-out!");
+    if (authData) {
+      console.log("authData: ", authData);
+      console.log("User " + authData.uid + " is logged in with " + authData.provider);
+      firebaseAuth.$unauth();
+      console.log("Succesfully logged user out!");
+    } else {
+      console.log("User is already logged out");
+    }
+  }
 })
 
 .controller('AuthCtrl', function ($scope, $state, $firebaseArray, $firebaseAuth) {
@@ -18,11 +31,11 @@ angular.module('starter.controllers', [])
   firebaseAuth.$onAuth(function (authData) {
     if (authData) {
       console.log("Logged in as:", authData.uid);
-      //$state.go('menu.home');
+      $state.go('menu.home');
       //disbale history stack
     } else {
       console.log("Logged out");
-      //$state.go('login');
+      $state.go('login');
       //disable history stack
     }
   });

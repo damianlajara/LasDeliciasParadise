@@ -15,17 +15,20 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close class="item item-icon-left" ui-sref="menu.home">
+        <ion-item nav-clear menu-close class="item item-icon-left" ui-sref="menu.home">
           <i class="icon ion-ios-home-outline royal"></i> Home
         </ion-item>
-        <ion-item menu-close class="item item-icon-left" ui-sref="menu.bookings">
+        <ion-item nav-clear menu-close class="item item-icon-left" ui-sref="menu.bookings">
             <i class="icon ion-ios-calendar-outline royal"></i> Book an appointment
         </ion-item>
-        <ion-item menu-close class="item item-icon-left" ui-sref="menu.events">
+        <ion-item nav-clear menu-close class="item item-icon-left" ui-sref="menu.events">
             <i class="icon ion-ios-pricetags-outline royal"></i> Events
         </ion-item>
-        <ion-item menu-close nav-clear class="item item-icon-left" ui-sref="menu.aboutUs">
+        <ion-item nav-clear menu-close class="item item-icon-left" ui-sref="menu.aboutUs">
             <i class="icon ion-ios-information-outline royal"></i> About Us
+        </ion-item>
+        <ion-item nav-clear menu-close class="item item-icon-left" ng-click="logout()">
+            <i class="icon ion-log-out royal"></i> Log out
         </ion-item>
       </ion-list>
     </ion-content>
