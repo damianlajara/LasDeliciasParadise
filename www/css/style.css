@@ -1,1 +1,29 @@
 /* Empty. Add your own CSS if you like */
+
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+	color: #fff;
+ 	background-color: #886aea;
+ 	border-color: #6b46e5;
+}
+
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, 
+.btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, 
+.open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus, 
+.open>.dropdown-toggle.btn-info:hover {
+	color: #fff;
+ 	background-color: #886aea;
+ 	border-color: #6b46e5;
+}
+
+.btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info {
+  	color: #fff;
+ 	background-color: #886aea;
+ 	border-color: #6b46e5;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
