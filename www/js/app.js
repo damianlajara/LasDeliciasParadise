@@ -94,6 +94,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
             controller: 'EventDetailCtrl'
           }
         }
+      })
+      // Sign up/login Form
+      .state('menu.login', {
+        url: "/login",
+        views: {
+          'menuContent': {
+            templateUrl: "templates/login.html",
+          }
+        }
+      })
+      .state('menu.signup', {
+        url: "/signup",
+        views: {
+          'menuContent': {
+            templateUrl: "templates/signup.html",
+          }
+        }
       });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/menu/home');
