@@ -25,6 +25,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
+
+    // Sign up/login Form
+    .state('login', {
+      url: "/login",
+      templateUrl: "templates/login.html",
+      controller: 'AuthCtrl'
+    })
+    .state('signup', {
+      url: "/signup",
+      templateUrl: "templates/signup.html",
+      controller: 'AuthCtrl'
+    })
+
     .state('menu', {
       url: "/menu",
       abstract: true,
@@ -98,26 +111,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
             controller: 'EventDetailCtrl'
           }
         }
-      })
-      // Sign up/login Form
-      .state('menu.login', {
-        url: "/login",
-        views: {
-          'menuContent': {
-            templateUrl: "templates/login.html",
-            controller: 'AuthCtrl'
-          }
-        }
-      })
-      .state('menu.signup', {
-        url: "/signup",
-        views: {
-          'menuContent': {
-            templateUrl: "templates/signup.html",
-            controller: 'AuthCtrl'
-          }
-        }
       });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/menu/home');
+  $urlRouterProvider.otherwise('/login');
 });
