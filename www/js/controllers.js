@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
     }
   };
 
-  $scope.signup = function(signupForm) {
+  $scope.register = function(signupForm) {
     console.log("Inside sign up!");
     // This allows us to validate the form making sure all the fields were entered correctly
     if (signupForm.$valid) {

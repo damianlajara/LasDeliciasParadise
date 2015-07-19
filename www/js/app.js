@@ -6,6 +6,7 @@
 
 // Global firebase reference. By setting it globally, it will load before AngularJS and can be used throughout the application.
 var firebaseRef = new Firebase("https://appsample.firebaseio.com");
+
 angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAnimate', 'firebase'])
 
 .run(function($ionicPlatform) {

@@ -1,9 +1,9 @@
 <ion-view view-title="Sign Up">
 	<ion-content class="padding">
-		<form name="signupForm" ng-submit="signup(signupForm)">
+		<form name="signupForm" ng-submit="register(signupForm)">
 			<div class="list">
 				<label class="item item-input item-icon-right">
-					<input type="text" name="fnameFormItem" placeholder="First Name" required ng-model="signupData.name" ng-pattern="/^[A-Za-z]{3,20}$/"
+					<input type="text" name="fnameFormItem" placeholder="First Name" required ng-model="signupData.firstName" ng-pattern="/^[A-Za-z]{3,20}$/"
                  ng-class="{ 'validate': signupForm.$invalid }" autofocus>
           <!-- Must be any combination of lowercase and/or uppercase letters with a length of 3-20 characters-->
 					<i class="icon" ng-class="{'ion-checkmark validation-icon-good' : signupForm.fnameFormItem.$valid && signupForm.fnameFormItem.$dirty, 'ion-close-round validation-icon-bad' : signupForm.fnameFormItem.$invalid && signupForm.fnameFormItem.$dirty }"></i>
@@ -30,8 +30,7 @@
 				  <i class="icon" ng-class="{'ion-checkmark validation-icon-good' : signupForm.passwordConfirmationFormItem.$valid && signupForm.passwordConfirmationFormItem.$dirty, 'ion-close-round validation-icon-bad' : signupForm.passwordConfirmationFormItem.$invalid && signupForm.passwordConfirmationFormItem.$dirty }"></i>
 				</label>
 			</div>
+			<button class="button button-block button-royal" ng-disabled="signupForm.$invalid">Sign Up</button>
 	</form>
-
-		<button class="button button-block button-royal" ng-disabled="signupForm.$invalid">Sign Up</button>
 	</ion-content>
 </ionic-view>
