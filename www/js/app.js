@@ -3,7 +3,10 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAnimate'])
+
+// Global firebase reference. By setting it globally, it will load before AngularJS and can be used throughout the application.
+var firebaseRef = new Firebase("https://appsample.firebaseio.com");
+angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAnimate', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -101,6 +104,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
         views: {
           'menuContent': {
             templateUrl: "templates/login.html",
+            controller: 'AuthCtrl'
           }
         }
       })
@@ -109,6 +113,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
         views: {
           'menuContent': {
             templateUrl: "templates/signup.html",
+            controller: 'AuthCtrl'
           }
         }
       });

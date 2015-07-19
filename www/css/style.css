@@ -6,9 +6,9 @@
  	border-color: #6b46e5;
 }
 
-.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, 
-.btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, 
-.open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus, 
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover,
+.btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover,
+.open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus,
 .open>.dropdown-toggle.btn-info:hover {
 	color: #fff;
  	background-color: #886aea;
@@ -27,3 +27,20 @@
   border-color: #ccc;
 }
 
+/*Error is set programmatically using ng-class*/
+input.ng-invalid.ng-dirty.validate {
+  /* background-color: red;*/
+  border: 1px solid red;
+}
+
+input.ng-valid.ng-dirty.validate {
+    border: 1px solid green;
+}
+
+.validation-icon-good {
+	color: green;
+}
+
+.validation-icon-bad {
+	color: red;
+}

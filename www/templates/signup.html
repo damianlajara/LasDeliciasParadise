@@ -1,23 +1,37 @@
 <ion-view view-title="Sign Up">
 	<ion-content class="padding">
-		<div class="list">
-			<label class="item item-input">
-				<input type="text" placeholder="First Name">
-			</label>
-			<label class="item item-input">
-				<input type="text" placeholder="Last Name">
-			</label>
-			<label class="item item-input">
-				<input type="text" placeholder="Email">
-			</label>
-			<label class="item item-input">
-				<input type="text" placeholder="Password">
-			</label>
-			<label class="item item-input">
-				<input type="text" placeholder="Confirm Password">
-			</label>
-		</div>
+		<form name="signupForm" ng-submit="signup(signupForm)">
+			<div class="list">
+				<label class="item item-input item-icon-right">
+					<input type="text" name="fnameFormItem" placeholder="First Name" required ng-model="signupData.name" ng-pattern="/^[A-Za-z]{3,20}$/"
+                 ng-class="{ 'validate': signupForm.$invalid }" autofocus>
+          <!-- Must be any combination of lowercase and/or uppercase letters with a length of 3-20 characters-->
+					<i class="icon" ng-class="{'ion-checkmark validation-icon-good' : signupForm.fnameFormItem.$valid && signupForm.fnameFormItem.$dirty, 'ion-close-round validation-icon-bad' : signupForm.fnameFormItem.$invalid && signupForm.fnameFormItem.$dirty }"></i>
+				</label>
+				<label class="item item-input item-icon-right">
+					<input type="text" name="lnameFormItem" placeholder="Last Name" ng-model="signupData.lastName" ng-pattern="/^[A-Za-z]{3,20}$/"
+                 ng-class="{ 'validate': signupForm.$invalid }">
+          <!-- Must be any combination of lowercase and/or uppercase letters with a length of 3-20 characters-->
+					<i class="icon" ng-class="{'ion-checkmark validation-icon-good' : signupForm.lnameFormItem.$valid && signupForm.lnameFormItem.$dirty, 'ion-close-round validation-icon-bad' : signupForm.lnameFormItem.$invalid && signupForm.lnameFormItem.$dirty }"></i>
+				</label>
+				<label class="item item-input item-icon-right">
+					<input type="email" name="emailFormItem" placeholder="Email" required ng-model="signupData.email" ng-pattern="/^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(?:[a-zA-Z]{2}|com|org|net|edu|gov|info)$/" ng-class="{ 'validate': signupForm.$invalid }">
+					<!-- Must be a valid email with the @ sign and valid domain-->
+					<i class="icon" ng-class="{'ion-checkmark validation-icon-good' : signupForm.emailFormItem.$valid && signupForm.emailFormItem.$dirty, 'ion-close-round validation-icon-bad' : signupForm.emailFormItem.$invalid && signupForm.emailFormItem.$dirty }"></i>
+				</label>
+				<label class="item item-input item-icon-right">
+					<input type="password" name="passwordFormItem" placeholder="Password" required ng-model="signupData.password" ng-pattern="/^^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?!.*[^A-Za-z0-9])(?!.*\s).{6,13}$/" ng-class="{ 'validate': signupForm.$invalid }">
+          <!-- // at least one number, one lowercase and one uppercase letter with no special characters
+          // at least six characters that are letters, numbers -->
+					<i class="icon" ng-class="{'ion-checkmark validation-icon-good' : signupForm.passwordFormItem.$valid && signupForm.passwordFormItem.$dirty, 'ion-close-round validation-icon-bad' : signupForm.passwordFormItem.$invalid && signupForm.passwordFormItem.$dirty }"></i>
+				</label>
+				<label class="item item-input item-icon-right">
+					<input type="password" name="passwordConfirmationFormItem" placeholder="Confirm Password" required ng-model="signupData.password_confirmation" compare-to="signupData.password" ng-class="{ 'validate': signupForm.$invalid }">
+				  <i class="icon" ng-class="{'ion-checkmark validation-icon-good' : signupForm.passwordConfirmationFormItem.$valid && signupForm.passwordConfirmationFormItem.$dirty, 'ion-close-round validation-icon-bad' : signupForm.passwordConfirmationFormItem.$invalid && signupForm.passwordConfirmationFormItem.$dirty }"></i>
+				</label>
+			</div>
+	</form>
 
-		<button class="button button-block button-royal">Sign Up</button>
+		<button class="button button-block button-royal" ng-disabled="signupForm.$invalid">Sign Up</button>
 	</ion-content>
 </ionic-view>

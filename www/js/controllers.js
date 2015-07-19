@@ -9,6 +9,85 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('AuthCtrl', function ($scope, $state, $firebaseArray, $firebaseAuth) {
+
+  var firebaseAuth = $firebaseAuth(firebaseRef);
+
+  // Callback that gets called everything time the user state changes
+  // Maybe attach to scope?
+  firebaseAuth.$onAuth(function (authData) {
+    if (authData) {
+      console.log("Logged in as:", authData.uid);
+      //$state.go('menu.home');
+      //disbale history stack
+    } else {
+      console.log("Logged out");
+      //$state.go('login');
+      //disable history stack
+    }
+  });
+
+  // Form data for the login modal
+  $scope.loginData = {};
+
+  // Form data for the login modal
+  $scope.signupData = {};
+
+  // Perform the login action when the user submits the login form
+  $scope.login = function(loginForm) {
+    // loginForm is the name we gave the form so we can validate the login request
+    if (loginForm.$valid) {
+      console.log('Doing login', $scope.loginData);
+      firebaseAuth.$authWithPassword({
+        email: $scope.loginData.email,
+        password: $scope.loginData.password
+      }).then(function (authData) {
+        remember: "sessionOnly"
+        console.log("Authenticated successfully with payload:", authData);
+      }).catch(function (error) {
+        console.error("Login Failed: " + error);
+      });
+    }
+  };
+
+  $scope.signup = function(signupForm) {
+    console.log("Inside sign up!");
+    // This allows us to validate the form making sure all the fields were entered correctly
+    if (signupForm.$valid) {
+      console.log('Doing registration', $scope.signupData);
+      //Create the user
+      firebaseAuth.$createUser({
+        email: $scope.signupData.email,
+        password: $scope.signupData.password
+      }).then(function (userData) {
+        // Sign the user in for write access
+        return firebaseAuth.$authWithPassword({
+          email: $scope.signupData.email,
+          password: $scope.signupData.password
+        });
+      }).then(function (authData) {
+        // Clear the form
+
+        // Save the user's data
+        console.log("User Data: ", authData);
+        console.log("Successfully created user account with uid:", authData.uid);
+        firebaseRef.child("users").child(authData.uid).set({
+          firstName: $scope.signupData.firstName,
+          lastName: $scope.signupData.lastName,
+          key: authData.uid, // ex: simplelogin:29
+          memberSince: Firebase.ServerValue.TIMESTAMP,
+          //I don't think we need these since we created the user already!
+          email: $scope.signupData.email,
+          password: $scope.signupData.password
+        });
+      }).catch(function (error) {
+        console.error("ERROR: " + error);
+      });
+    }
+  };
+
+})
+
 .controller('TabHomeCtrl', function($scope) {
   $scope.myInterval = 5000;
   var slides = $scope.slides = [];
@@ -24,7 +103,9 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('TabTermsCtrl', function($scope) {})
+.controller('TabTermsCtrl', function($scope) {
+
+})
 
 .controller('TabContactCtrl', function($scope) {
 
@@ -139,4 +220,24 @@ angular.module('starter.controllers', [])
         });
     }
   }
+})
+
+/*Used to compare two form elements- Used in checked the password and password confirmation!*/
+.directive("compareTo", function () {
+  return {
+    require: "ngModel",
+    scope: {
+      otherModelValue: "=compareTo"
+    },
+    link: function (scope, element, attributes, ngModel) {
+
+      ngModel.$validators.compareTo = function (modelValue) {
+        return modelValue === scope.otherModelValue;
+      };
+
+      scope.$watch("otherModelValue", function () {
+        ngModel.$validate();
+      });
+    }
+  };
 });

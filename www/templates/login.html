@@ -1,16 +1,18 @@
 <ion-view view-title="Login">
 	<ion-content class="padding">
-		<div class="list">
-			<label class="item item-input">
-				<i class="icon ion-ios-email-outline placeholder-icon royal"></i>
-				<input type="text" placeholder="Email">
-			</label>
-			
-			<label class="item item-input">
-				<i class="icon ion-ios-locked-outline placeholder-icon royal"></i>
-				<input type="text" placeholder="Password">
-			</label>
-		</div>
-		<button class="button button-block button-royal">Log in</button>
+		<form name="loginForm" ng-submit="login(loginForm)">
+			<div class="list">
+				<label class="item item-input">
+					<i class="icon ion-ios-email-outline placeholder-icon royal"></i>
+					<input type="email" placeholder="Email" required ng-model="loginData.email">
+				</label>
+
+				<label class="item item-input">
+					<i class="icon ion-ios-locked-outline placeholder-icon royal"></i>
+					<input type="password" placeholder="Password" required ng-model="loginData.password">
+				</label>
+			</div>
+		</form>
+		<button class="button button-block button-royal" ng-disabled="loginForm.$invalid">Log in</button>
 	</ion-content>
 </ionic-view>
