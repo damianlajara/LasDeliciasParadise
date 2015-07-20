@@ -28,11 +28,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
 
     // Sign up/login Form
     .state('login', {
+      //cache: false,
       url: "/login",
       templateUrl: "templates/login.html",
       controller: 'AuthCtrl'
     })
     .state('signup', {
+      //cache: false,
       url: "/signup",
       templateUrl: "templates/signup.html",
       controller: 'AuthCtrl'

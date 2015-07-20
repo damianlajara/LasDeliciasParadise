@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   $ionicConfigProvider.navBar.alignTitle('center')
 })
 
-.controller('MenuCtrl', function($scope, $firebaseAuth) {
+.controller('MenuCtrl', function($scope, $firebaseAuth, $state, $ionicHistory) {
   var firebaseAuth = $firebaseAuth(firebaseRef);
   var authData = firebaseAuth.$getAuth();
 
@@ -16,13 +16,16 @@ angular.module('starter.controllers', [])
       console.log("User " + authData.uid + " is logged in with " + authData.provider);
       firebaseAuth.$unauth();
       console.log("Succesfully logged user out!");
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({historyRoot: true});
+      $state.go('login');
     } else {
       console.log("User is already logged out");
     }
   }
 })
 
-.controller('AuthCtrl', function ($scope, $state, $firebaseArray, $firebaseAuth) {
+.controller('AuthCtrl', function ($scope, $state, $firebaseArray, $firebaseAuth, $ionicHistory) {
 
   var firebaseAuth = $firebaseAuth(firebaseRef);
 
@@ -31,13 +34,20 @@ angular.module('starter.controllers', [])
   firebaseAuth.$onAuth(function (authData) {
     if (authData) {
       console.log("Logged in as:", authData.uid);
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({historyRoot: true});
       $state.go('menu.home');
-      //disbale history stack
-    } else {
-      console.log("Logged out");
-      $state.go('login');
-      //disable history stack
     }
+      //disable history stack
+      //$ionicHistory.clearHistory();
+    // } else {
+    //   console.log("Logged out");
+    //   //$ionicHistory.nextViewOptions({historyRoot: true});
+    //   $state.go('login');
+    //   //disable history stack
+    //   //$ionicHistory.clearHistory();
+    //   //$ionicHistory.clearCache();
+    // }
   });
 
   // Form data for the login modal
