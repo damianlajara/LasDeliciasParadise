@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('AuthCtrl', function ($scope, $state, $firebaseArray, $firebaseAuth, $ionicHistory) {
+.controller('AuthCtrl', function ($scope, $state, $firebaseArray, $firebaseAuth, $ionicHistory, $ionicLoading) {
 
   var firebaseAuth = $firebaseAuth(firebaseRef);
 
@@ -50,6 +50,15 @@ angular.module('starter.controllers', [])
     // }
   });
 
+  $scope.showLoader = function() {
+    $ionicLoading.show({
+      templateUrl:"templates/loading.html"
+    });
+  };
+  $scope.hideLoader = function(){
+    $ionicLoading.hide();
+  };
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -59,15 +68,20 @@ angular.module('starter.controllers', [])
   // Perform the login action when the user submits the login form
   $scope.login = function(loginForm) {
     // loginForm is the name we gave the form so we can validate the login request
+    $scope.loginError = false;
     if (loginForm.$valid) {
       console.log('Doing login', $scope.loginData);
+      $scope.showLoader();
       firebaseAuth.$authWithPassword({
         email: $scope.loginData.email,
         password: $scope.loginData.password
       }).then(function (authData) {
         remember: "sessionOnly"
         console.log("Authenticated successfully with payload:", authData);
+        $scope.hideLoader();
       }).catch(function (error) {
+        $scope.hideLoader();
+        $scope.loginError = true;
         console.error("Login Failed: " + error);
       });
     }
@@ -78,6 +92,7 @@ angular.module('starter.controllers', [])
     // This allows us to validate the form making sure all the fields were entered correctly
     if (signupForm.$valid) {
       console.log('Doing registration', $scope.signupData);
+      $scope.showLoader();
       //Create the user
       firebaseAuth.$createUser({
         email: $scope.signupData.email,
@@ -89,6 +104,7 @@ angular.module('starter.controllers', [])
           password: $scope.signupData.password
         });
       }).then(function (authData) {
+        $scope.hideLoader();
         // Clear the form
 
         // Save the user's data
@@ -104,6 +120,7 @@ angular.module('starter.controllers', [])
           password: $scope.signupData.password
         });
       }).catch(function (error) {
+        $scope.hideLoader();
         console.error("ERROR: " + error);
       });
     }

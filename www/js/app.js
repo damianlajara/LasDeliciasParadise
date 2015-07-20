@@ -24,8 +24,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
-
     // Sign up/login Form
     .state('login', {
       //cache: false,

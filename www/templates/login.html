@@ -3,6 +3,7 @@
 </ion-header-bar>
 <ion-view view-title="Login">
 	<ion-content class="padding">
+		<alert ng-show="loginError" type="danger">The password or email is incorrect</alert>
 		<form name="loginForm" ng-submit="login(loginForm)">
 			<div class="list">
 				<label class="item item-input">
