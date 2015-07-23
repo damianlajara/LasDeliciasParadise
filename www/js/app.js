@@ -62,6 +62,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ui.bootstrap', 'ngAn
           }
         }
       })
+      //TODO Create profile state here. Will have the users icon as a picture as well as the settings that the user will want to changes
+      //TODO Thinking of using a settings modal where the user can click on something and it will automatically update it
+      //and then bring the user back to the original Page with the settings changed
+      //maybe use an ngModel to bind the data after performing a query from the server to retireve all the users data into a service or array
+      .state('menu.profile', {
+        url: "/profile",
+        views: {
+          'menuContent': {
+              templateUrl:"templates/profile.html",
+              controller: "ProfileCtrl"
+          }
+        }
+      })
     .state('menu.aboutUs', {
       url: "/aboutUs",
       views: {
